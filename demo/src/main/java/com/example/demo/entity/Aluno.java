@@ -19,6 +19,17 @@ public class Aluno {
     private String email;
     private String senha;
 
+    public Aluno() {
+    }
+
+    public Aluno(Long id, String nome, String dataNasc, String email, String senha) {
+        this.id = id;
+        this.nome = nome;
+        this.dataNasc = dataNasc;
+        this.email = email;
+        this.senha = senha;
+    }
+
     public Long getId() {
         return id;
     }
