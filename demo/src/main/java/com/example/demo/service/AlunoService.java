@@ -15,23 +15,23 @@ public class AlunoService {
     @Autowired
     private AlunoRepositoty alunoRepositoty;
 
-    private List<Aluno> findAllAlunos(){
+    public List<Aluno> findAllAlunos(){
         return alunoRepositoty.findAll();
     }
 
-    private Optional<Aluno> findAlunoById(Long id){
+    public Optional<Aluno> findAlunoById(Long id){
         return alunoRepositoty.findById(id);
     }
 
-    private Aluno saveAluno(Aluno aluno){
+    public Aluno saveAluno(Aluno aluno){
         return alunoRepositoty.save(aluno);
     }
 
-    private void deleteAluno(Long id){
+    public void deleteAluno(Long id){
         alunoRepositoty.deleteById(id);
     }
 
-    private Aluno updateAluno (Long id, Aluno updateAluno){
+    public Aluno updateAluno (Long id, Aluno updateAluno){
         return alunoRepositoty.findById(id)
                 .map(aluno -> {
                     aluno.setNome(updateAluno.getNome());
