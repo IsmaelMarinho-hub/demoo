@@ -15,30 +15,43 @@ public class AlunoService {
     @Autowired
     private AlunoRepositoty alunoRepositoty;
 
-    public List<Aluno> findAllAlunos(){
-        return alunoRepositoty.findAll();
+    public List<AlunoDTO> findAllAlunos(){
+        return alunoRepositoty.findAll()
+                .stream()
+                .map(this::toDTO)
+                .toList();
+
     }
 
-    public Optional<Aluno> findAlunoById(Long id){
-        return alunoRepositoty.findById(id);
+    public Optional<AlunoDTO> findAlunoById(Long id){
+        return alunoRepositoty.findById(id)
+                .map(this::toDTO);
     }
 
-    public Aluno saveAluno(Aluno aluno){
-        return alunoRepositoty.save(aluno);
+    public AlunoDTO saveAluno(Aluno aluno){
+        Aluno alunoSaved = alunoRepositoty.save(aluno);
+        return toDTO(alunoSaved);
     }
 
     public void deleteAluno(Long id){
         alunoRepositoty.deleteById(id);
     }
 
-    public Aluno updateAluno (Long id, Aluno updateAluno){
+    public AlunoDTO updateAluno (Long id, Aluno updateAluno){
         return alunoRepositoty.findById(id)
                 .map(aluno -> {
                     aluno.setNome(updateAluno.getNome());
                     aluno.setEmail(updateAluno.getEmail());
                     aluno.setDataNasc(updateAluno.getDataNasc());
                     aluno.setSenha(updateAluno.getSenha());
-                    return alunoRepositoty.save(aluno);
+
+                    Aluno alunoSaved = alunoRepositoty.save(aluno);
+                    return toDTO(alunoSaved);
                 }).orElseThrow(() -> new RuntimeException("Alunno não existe!"));
     }
+
+    private AlunoDTO toDTO(Aluno aluno){
+        return new AlunoDTO(aluno.getId(), aluno.getNome(), aluno.getEmail());
+    }
+
 }

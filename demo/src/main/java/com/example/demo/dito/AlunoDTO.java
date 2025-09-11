@@ -1,4 +1,5 @@
 package com.example.demo.dito;
+import com.example.demo.service.AlunoService;
 
 public class AlunoDTO {
 
@@ -38,4 +39,5 @@ public class AlunoDTO {
     public void setEmail(String email) {
         this.email = email;
     }
+
 }
