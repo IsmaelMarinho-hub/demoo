@@ -1,5 +1,6 @@
 package com.example.demo.dito;
-import com.example.demo.service.AlunoService;
+
+import com.example.demo.entity.Endereco;
 
 public class AlunoDTO {
 
@@ -7,13 +8,16 @@ public class AlunoDTO {
     private String nome;
     private String email;
 
+    private Endereco endereco;
+
     public AlunoDTO() {
     }
 
-    public AlunoDTO(Long id, String nome, String email) {
+    public AlunoDTO(Long id, String nome, String email, Endereco endereco) {
         this.id = id;
         this.nome = nome;
         this.email = email;
+        this.endereco = endereco;
     }
 
     public Long getId() {
@@ -40,4 +44,11 @@ public class AlunoDTO {
         this.email = email;
     }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 }

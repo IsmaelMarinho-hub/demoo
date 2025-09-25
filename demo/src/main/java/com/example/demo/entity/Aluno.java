@@ -1,9 +1,6 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -18,6 +15,9 @@ public class Aluno {
     private String dataNasc;
     private String email;
     private String senha;
+
+    @OneToOne(mappedBy = "aluno", cascade = CascadeType.ALL)
+    private Endereco endereco;
 
     public Aluno() {
     }
@@ -70,4 +70,11 @@ public class Aluno {
         this.senha = senha;
     }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 }
