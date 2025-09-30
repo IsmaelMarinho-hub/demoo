@@ -19,6 +19,8 @@ public class Aluno {
     @OneToOne(mappedBy = "aluno", cascade = CascadeType.ALL)
     private Endereco endereco;
 
+
+
     public Aluno() {
     }
 
