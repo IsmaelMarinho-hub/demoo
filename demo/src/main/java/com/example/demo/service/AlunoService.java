@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.dito.AlunoDTO;
+import com.example.demo.dto.AlunoDTO;
 import com.example.demo.entity.Aluno;
 import com.example.demo.repository.AlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;

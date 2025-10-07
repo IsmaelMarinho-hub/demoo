@@ -1,8 +1,10 @@
 package com.example.demo.controller;
 
-import com.example.demo.dito.AlunoDTO;
+import com.example.demo.dto.AlunoDTO;
+
 import com.example.demo.entity.Aluno;
 import com.example.demo.service.AlunoService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("Aluno")
+@RequestMapping("aluno")
 public class AlunoController {
 
     @Autowired
@@ -30,8 +32,8 @@ public class AlunoController {
     }
 
     @PostMapping
-    private AlunoDTO criarAluno(@RequestBody Aluno aluno){
-        return  alunoService.saveAluno(aluno);
+    private AlunoDTO criarAluno(@Valid @RequestBody Aluno aluno){
+        return alunoService.saveAluno(aluno);
     }
 
     @DeleteMapping("/{id}")
@@ -42,7 +44,7 @@ public class AlunoController {
 
     @PutMapping("/{id}")
     private AlunoDTO atualizarAluno(@PathVariable Long id, @RequestBody Aluno aluno){
-        return alunoService.updateAluno(id,aluno);
+        return alunoService.updateAluno(id, aluno);
     }
 
 }
